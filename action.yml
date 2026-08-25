@@ -1,0 +1,31 @@
+name: 'Asana GitHub Updates'
+description: 'Dodaje wpisy o commitach i Pull Requestach do zadania-dziennika w Asanie.'
+author: 'tkacpertech'
+
+branding:
+  icon: 'git-commit'
+  color: 'orange'
+
+inputs:
+  asana-token:
+    description: 'Personal Access Token Asany.'
+    required: true
+  asana-task-gid:
+    description: 'GID zadania-dziennika, do ktorego trafiaja wpisy.'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.14'
+
+    - name: Post update to Asana
+      shell: bash
+      run: python -m asana_integrator
+      env:
+        PYTHONPATH: ${{ github.action_path }}/src
+        PYTHONIOENCODING: utf-8
+        ASANA_TOKEN: ${{ inputs.asana-token }}
+        ASANA_TASK_GID: ${{ inputs.asana-task-gid }}

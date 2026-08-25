@@ -1,10 +1,10 @@
 [project]
 name = "asana-integrator"
 version = "0.1.0"
-description = "Add your description here"
+description = "GitHub Actions bot that posts commits and pull requests as formatted updates to an Asana task."
 readme = "README.md"
 authors = [
-    { name = "devktelesz", email = "kacpertelesz@europ.com.pl" }
+    { name = "tkacpertech", email = "tkacpertech@gmail.com" }
 ]
 requires-python = ">=3.14"
 dependencies = []
