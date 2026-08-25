@@ -13,6 +13,10 @@ inputs:
   asana-task-gid:
     description: 'GID zadania-dziennika, do ktorego trafiaja wpisy.'
     required: true
+  ignore-branches:
+    description: 'Lista branchy (glob), dla ktorych pushe maja byc pomijane - po przecinku lub w nowych liniach.'
+    required: false
+    default: ''
 
 runs:
   using: composite
@@ -29,3 +33,4 @@ runs:
         PYTHONIOENCODING: utf-8
         ASANA_TOKEN: ${{ inputs.asana-token }}
         ASANA_TASK_GID: ${{ inputs.asana-task-gid }}
+        IGNORE_BRANCHES: ${{ inputs.ignore-branches }}
